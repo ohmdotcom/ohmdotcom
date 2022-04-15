@@ -1,0 +1,14 @@
+[Unit]
+Description=simple service based on python script
+After=rsyslog.service
+[Service]
+Type=simple
+PIDFile=/var/lib/myservice.pid
+WorkingDirectory=/var/www/logger
+User=root
+Group=root
+ExecStart=/usr/bin/python3 logger.py --start
+TimeoutSec=100
+Restart=always
+[Install]
+WantedBy=multi-user.target
